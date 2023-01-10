@@ -1,10 +1,6 @@
-import parser from "./nodejs-lib-ruby-parser.js";
+//import parser from "./nodejs-lib-ruby-parser.js";
+import parser from "./RubyParser.js";
 
-console.log(parser);
-//const { RubyParser } = require("./nodejs-lib-ruby-parser.js");
-//const parser = RubyParser; // new RubyParser();
-//const p = parser.parse({ filePath: './test.rb' });
-//const p = parser.parse('./test.rb');
 const src = `
 cls; x=15
 while true
@@ -19,16 +15,4 @@ while true
 end
 `;
 const p = parser.parse(src);
-//console.log(p);
 console.log(JSON.stringify(p.ast, null, 2))
-//console.log(parser.getAst());
-
-/*
-const inspect = require('util').inspect;
-const full = (x)=>inspect(x, true, Infinity);
-
-const parser = new RubyParser('./test.rb');
-const methods = parser.getMethods();
-console.log('info', parser.getInfo());
-console.log('methods', methods);
-*/
