@@ -2,7 +2,7 @@ const module = {
     exports: {}
 };
 
-await (async function () {
+//await (async function () {
     let root;
 
     if (typeof (module) !== 'undefined') {
@@ -4245,7 +4245,9 @@ module.exports.__wbindgen_memory = function() {
 
 //const path = require('path').join(__dirname, 'nodejs-lib-ruby-parser.wasm');
 //const bytes = require('fs').readFileSync(path);
-const bytes = await Deno.readFile("nodejs-lib-ruby-parser.wasm")
+//const bytes = await Deno.readFile("nodejs-lib-ruby-parser.wasm")
+const url = "https://code4fukui.github.io/ruby_parser/nodejs-lib-ruby-parser.wasm";
+const bytes = new Uint8Array(await (await fetch(url)).arrayBuffer());
 
 const wasmModule = new WebAssembly.Module(bytes);
 const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
@@ -4257,6 +4259,6 @@ module.exports.__wasm = wasm;
 
 
 
-})();
+//})();
 
 export default module.exports;
