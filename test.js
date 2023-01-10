@@ -1,4 +1,6 @@
-const parser = require("./nodejs-lib-ruby-parser.js");
+import parser from "./nodejs-lib-ruby-parser.js";
+
+console.log(parser);
 //const { RubyParser } = require("./nodejs-lib-ruby-parser.js");
 //const parser = RubyParser; // new RubyParser();
 //const p = parser.parse({ filePath: './test.rb' });

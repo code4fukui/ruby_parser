@@ -1,6 +1,8 @@
+const module = {
+    exports: {}
+};
 
-
-(function () {
+await (async function () {
     let root;
 
     if (typeof (module) !== 'undefined') {
@@ -2627,7 +2629,7 @@ function lib_ruby_parser__now() {
 let imports = {};
 imports['__wbindgen_placeholder__'] = module.exports;
 let wasm;
-const { TextDecoder, TextEncoder } = require(`util`);
+//const { TextDecoder, TextEncoder } = require(`util`);
 
 const heap = new Array(32).fill(undefined);
 
@@ -4241,8 +4243,9 @@ module.exports.__wbindgen_memory = function() {
     return addHeapObject(ret);
 };
 
-const path = require('path').join(__dirname, 'nodejs-lib-ruby-parser.wasm');
-const bytes = require('fs').readFileSync(path);
+//const path = require('path').join(__dirname, 'nodejs-lib-ruby-parser.wasm');
+//const bytes = require('fs').readFileSync(path);
+const bytes = await Deno.readFile("nodejs-lib-ruby-parser.wasm")
 
 const wasmModule = new WebAssembly.Module(bytes);
 const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
@@ -4256,3 +4259,4 @@ module.exports.__wasm = wasm;
 
 })();
 
+export default module.exports;
