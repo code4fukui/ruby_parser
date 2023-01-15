@@ -4250,8 +4250,8 @@ module.exports.__wbindgen_memory = function() {
 //const bytes = new Uint8Array(await (await fetch(url)).arrayBuffer());
 const bytes = (await import("./nodejs-lib-ruby-parser.wasm.js")).default;
 
-const wasmModule = new WebAssembly.Module(bytes);
-const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
+const wasmModule = await WebAssembly.compile(bytes);
+const wasmInstance = await WebAssembly.instantiate(wasmModule, imports);
 wasm = wasmInstance.exports;
 module.exports.__wasm = wasm;
 
